@@ -25,6 +25,6 @@ spec:
     spec:
       containers:
       - name: simple-webapp
-        image: asia.gcr.io/ds-project/ds-gke-simplewebapp:latest
+        image: asia.gcr.io/ds-project/ds-cloudbuild-test:latest
         ports:
           - containerPort: 80
