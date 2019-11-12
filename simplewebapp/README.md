@@ -7,7 +7,7 @@ Instruction for build and run as below
 Require: Docker running on the build enviroment
 ```
 # build docker image with tag name
-docker build -t ds-gke-simplewebapp:lasters -f simplewebapp.Dockerfile .
+docker build -t ds-gke-simplewebapp:latest -f simplewebapp.Dockerfile .
 ```
 
 ## Push docker image to GCP Container Registry
@@ -23,7 +23,7 @@ gcloud auth configure-docker
 # Tag the local image with the registry name 
 # docker tag [SOURCE_IMAGE] [HOSTNAME]/[PROJECT-ID]/[IMAGE]:[TAG]
 docker images
-docker tag 1e2055780000 asia.gcr.io/ds-project/ds-gke-simplewebapp:lasters
+eg: docker tag 1e2055780000 asia.gcr.io/ds-project/ds-gke-simplewebapp:latest
 
 # check image tag
 docker images

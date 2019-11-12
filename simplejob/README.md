@@ -1,4 +1,4 @@
-# Create and Run Simple Web App on GKE
+# Create and Run Simple Job on GKE
 Hashimoto Du at DevSamurai
 
 Instruction for build and run as below
@@ -7,7 +7,7 @@ Instruction for build and run as below
 Require: Docker running on the build enviroment
 ```
 # build docker image with tag name
-docker build -t ds-gke-simplewebapp:lasters -f simplewebapp.Dockerfile .
+docker build -t ds-gke-simplejob:latest -f simplejob.Dockerfile .
 ```
 
 ## Push docker image to GCP Container Registry
@@ -23,14 +23,14 @@ gcloud auth configure-docker
 # Tag the local image with the registry name 
 # docker tag [SOURCE_IMAGE] [HOSTNAME]/[PROJECT-ID]/[IMAGE]:[TAG]
 docker images
-docker tag 1e2055780000 asia.gcr.io/ds-project/ds-gke-simplewebapp:lasters
+eg: docker tag 1e2055780000 asia.gcr.io/ds-project/ds-gke-simplejob:latest
 
 # check image tag
 docker images
 
 # Push Docker image to Container Registry
 # docker push [HOSTNAME]/[PROJECT-ID]/[IMAGE]
-docker push asia.gcr.io/ds-project/ds-gke-simplewebapp
+docker push asia.gcr.io/ds-project/ds-gke-simplejob
 
 ```
 
@@ -50,6 +50,6 @@ gcloud container clusters create ds-gke-small-cluster \
 gcloud container clusters get-credentials --zone asia-northeast1-b ds-gke-small-cluster
 
 # deploy web app image to GKE
-kubectl apply -f simplewebapp.deployment.yaml
+kubectl apply -f simplejob.deployment.yaml
 
 ```
