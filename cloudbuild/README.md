@@ -1,40 +1,16 @@
-# Create and Run Simple Web App on GKE
+# Use Cloud Build to build docker image and push it on Container Registry
 Hashimoto Du at DevSamurai
 
 Instruction for build and run as below
 
-## Build Docker image
-Require: Docker running on the build enviroment
+## Run Cloud Build
+Require: gcloud auth login, and set project first
 ```
-# build docker image with tag name
-docker build -t ds-gke-simplewebapp:latest -f simplewebapp.Dockerfile .
-```
-
-## Push docker image to GCP Container Registry
-```
-# login then set working project
-gcloud auth login
-gcloud config set project [PROJECT_ID]
-
-# Configured Docker to use gcloud as a credential
-gcloud auth configure-docker
-
-
-# Tag the local image with the registry name 
-# docker tag [SOURCE_IMAGE] [HOSTNAME]/[PROJECT-ID]/[IMAGE]:[TAG]
-docker images
-eg: docker tag 1e2055780000 asia.gcr.io/ds-project/ds-gke-simplewebapp:latest
-
-# check image tag
-docker images
-
-# Push Docker image to Container Registry
-# docker push [HOSTNAME]/[PROJECT-ID]/[IMAGE]
-docker push asia.gcr.io/ds-project/ds-gke-simplewebapp
-
+cd path_to_app_folder
+gcloud builds submit --config cloudbuild.simplewebapp.yaml
 ```
 
-# create cluster on gke
+## Deploy app from Container registry image to GKE
 ```
 # tạo cluster trong GKE
 gcloud container clusters create ds-gke-small-cluster \
