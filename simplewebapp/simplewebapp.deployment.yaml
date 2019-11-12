@@ -25,6 +25,6 @@ spec:
     spec:
       containers:
       - name: simple-webapp
-        image: asia.gcr.io/syns-226007/ds-gke-simplewebapp:lasters
+        image: asia.gcr.io/ds-project/ds-gke-simplewebapp:lasters
         ports:
           - containerPort: 80
