@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-webapp-service
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: simple-webapp
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: simple-webapp
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: simple-webapp
+    spec:
+      containers:
+      - name: simple-webapp
+        image: asia.gcr.io/syns-226007/ds-gke-simplewebapp:lasters
+        ports:
+          - containerPort: 80
