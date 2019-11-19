@@ -1,2 +1,5 @@
 # OS
-*.DS_Storee
+*.DS_Store
+
+# working file
+bak.*
