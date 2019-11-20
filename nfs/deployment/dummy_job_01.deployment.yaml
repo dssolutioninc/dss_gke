@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dummy-job-01
+spec:
+  template:
+    metadata:
+      name: dummy-job-01
+    spec:
+      containers:
+      - name: dummy-job-01-container
+        image: asia.gcr.io/syns-226007/dummy-job:latest
+        command: ["/app/dummyjob"]
+        args: ["--job-name", "job-01", "--output-path", "/app/output"]
+        volumeMounts:
+        - mountPath: /app/output
+          name: nfs-volume
+      volumes:
+      - name: nfs-volume
+        persistentVolumeClaim:
+          claimName: nfs-data-volume
+      restartPolicy: Never

@@ -1,0 +1,31 @@
+steps:
+# go build
+- name: golang:1.12
+  dir: .
+  args: ['go', 'build', '-o', 'dummyjob', 'job/dummyjob.go']
+  env: ["CGO_ENABLED=0"]
+
+# docker build
+- name: 'gcr.io/cloud-builders/docker'
+  dir: .
+  args: [
+         'build',
+         '-t', '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}:${_GCR_TAG}',
+         '-f', 'dummyjob.Dockerfile',
+         '--cache-from', '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}:${_GCR_TAG}',
+         '.'
+        ]
+
+# push image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["push", '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}']
+
+substitutions:
+  # # GCR region name to push image
+  _GCR_REGION: asia.gcr.io
+  # # Project ID
+  _GCR_PROJECT: syns-226007
+  # # Image name
+  _GCR_IMAGE_NAME: dummy-job
+  # # Image tag
+  _GCR_TAG: latest
