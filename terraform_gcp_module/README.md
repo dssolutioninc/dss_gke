@@ -1,103 +1,99 @@
-co# [Terraform](https://www.terraform.io/)を利用したインフラ定義
+# [Terraform](https://www.terraform.io/)スクリプトをモジュール化して、GCPの複数環境に適用
+※Terraformのv0.12.16バージョンを使っています。（この記事記載時点の最新バージョンです）
+
+本記事の目的
+・Terraformスクリプトをモジュール化して、GCPの開発環境、テスト環境、本番環境に適用する方法のご紹介
+
+Terraformは初めての方はこの記事（[Terraformツールを使ってGCPリソース管理](https://qiita.com/devs_hd/items/6a715fedf5462af420f2)）もご覧ください。
 
 
-## 事前準備
+## 1. 　Terraformスクリプト作成
+この記事では、GKEクラスタ、ストレージBucket、Pubsub Topic＆Subscriptionを例としてデプロイスクリプトを作成します。
 
-サービスアカウントのaccount.jsonを準備して、配置すること。
+Terraformスクリプトフォルダの構成
 
 ```sh
-# create service account
-gcloud iam service-accounts create terraform-serviceaccount \
-  --display-name "Account for Terraform"
-
-# NEED ADMIN to add permission
-# example for staging env
-gcloud config set project syns-sol-grdsys-stage
-
-gcloud projects add-iam-policy-binding syns-sol-grdsys-stage \
-  --member serviceAccount:terraform-serviceaccount@syns-sol-grdsys-stage.iam.gserviceaccount.com \
-  --role roles/editor
-
-# create credentials file account.json
-gcloud iam service-accounts keys create path_to_save_folder/account.json \
-  --iam-account terraform-serviceaccount@syns-sol-grdsys-stage.iam.gserviceaccount.com
+terraform_script_folder
+├── _modules
+│   ├── cluster
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── pubsub
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   └── storage
+│       ├── main.tf
+│       ├── outputs.tf
+│       └── variables.tf
+├── dev
+│   ├── account.json
+│   └── terraform.tfstate
+├── dev.tfvars
+├── main.tf
+├── prod
+│   ├── account.json
+│   └── terraform.tfstate
+├── prod.tfvars
+├── staging
+│   ├── account.json
+│   └── terraform.tfstate
+├── staging.tfvars
+└── variables.tf
 ```
 
+フォルダ構成の説明
 
-## Terraform　操作
-環境ごとのstateファイルは環境名ごとのフォルダで管理している。
+- _modulesフォルダ：リソース種類のごとに共有定義スクリプトを格納する
+- dev、staging、prodのフォルダ：開発、ステージング、本番の環境用にアクセス用のアカウントファイルとStateファイルを格納
+- dev.tfvars、staging.tfvars、prod.tfvarsのファイル：各種環境によるパラメータ設定ファイル
 
-```sh
-# set credentials to environment variable
-$ export GOOGLE_CLOUD_KEYFILE_JSON={{path_to_account.json}}
-```
 
-```sh
-$ cd terraform_folder
-
-# 初期化（初回のみ）
-$ terraform init
-```
+## 2.  環境別にデプロイ実施
+#### 2.1  開発環境
 
 ```sh
-$ cd terraform_folder
-
-# tfファイルを編集する
-$ vi main.tf
-
-```
-
-```sh
-$ cd terraform_folder
-
-# フォーマットする（tfファイルを編集時のみ）
-$ terraform fmt
-```
-
-```sh
-$ cd terraform_folder
+# 専用の環境変数にCredentialファイルを設定する
+$ export GOOGLE_CLOUD_KEYFILE_JSON=path_to/dev/account.json
 
 # tfファイルを適用する前に必ず差分を確認する
-# 開発環境
-$ terraform plan -var-file="dev.tfvars" -state=./dev/terraform.tfstate
-
-# Staging環境
-$ terraform plan -var-file="staging.tfvars" -state=./staging/terraform.tfstate
-
-# 本番環境
-$ terraform plan -var-file="prod.tfvars" -state=./prod/terraform.tfstate
-```
-
-```sh
-$ cd terraform_folder
+cd [TERRAFORM_FOLDER]
+terraform plan -var-file="dev.tfvars" -state=./dev/terraform.tfstate
 
 # planの結果が想定通りなら、tfファイルを適用する
-# 開発環境
-$ terraform apply -var-file="dev.tfvars" -state=./dev/terraform.tfstate
-
-# Staging環境
-$ terraform apply -var-file="staging.tfvars" -state=./staging/terraform.tfstate
-
-# 本番環境
-$ terraform apply -var-file="prod.tfvars" -state=./prod/terraform.tfstate
+terraform apply -var-file="dev.tfvars" -state=./dev/terraform.tfstate
 ```
 
-その他、よく使うコマンド
+#### 2.2  ステージング環境
 
 ```sh
-$ cd terraform_folder
+# 専用の環境変数にCredentialファイルを設定する
+$ export GOOGLE_CLOUD_KEYFILE_JSON=path_to/staging/account.json
 
-# 何らかの理由で先にGCPへ物を作ってしまった場合、importでtfstateへ反映可能。
-$ terraform import -var-file="dev.tfvars" -state=./dev/terraform.tfstate <tfファイルのリソース名> <GCPのリソース名>
+# tfファイルを適用する前に必ず差分を確認する
+cd [TERRAFORM_FOLDER]
+terraform plan -var-file="staging.tfvars" -state=./staging/terraform.tfstate
+
+# planの結果が想定通りなら、tfファイルを適用する
+terraform apply -var-file="staging.tfvars" -state=./staging/terraform.tfstate
 ```
+
+#### 2.3  本番環境
 
 ```sh
-$ cd terraform_folder
+# 専用の環境変数にCredentialファイルを設定する
+$ export GOOGLE_CLOUD_KEYFILE_JSON=path_to/prod/account.json
 
-# tfstateファイルを最新化したい
-$ terraform refresh -var-file="dev.tfvars" -state=./dev/terraform.tfstate
+# tfファイルを適用する前に必ず差分を確認する
+cd [TERRAFORM_FOLDER]
+terraform plan -var-file="staging.tfvars" -state=./prod/terraform.tfstate
+
+# planの結果が想定通りなら、tfファイルを適用する
+terraform apply -var-file="staging.tfvars" -state=./prod/terraform.tfstate
 ```
 
-## Ref
 
-* [GCP用に用意されたTerraformのドキュメント](https://www.terraform.io/docs/providers/google/)
+
+最後まで読んで頂き、どうも有難う御座います!
+DevSamurai 橋本
