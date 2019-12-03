@@ -4,7 +4,7 @@ terraform {
 
 ## project ##
 provider "google" {
-  project     = "syns-226007"
+  project     = "project-abc123"
   region      = "asia-northeast1"
 }
 
