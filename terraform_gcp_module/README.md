@@ -93,7 +93,12 @@ terraform plan -var-file="staging.tfvars" -state=./prod/terraform.tfstate
 terraform apply -var-file="staging.tfvars" -state=./prod/terraform.tfstate
 ```
 
+本記事の利用ソースコードはこちら
+[https://github.com/itdevsamurai/gke/tree/master/terraform_gcp_module](https://github.com/itdevsamurai/gke/tree/master/terraform_gcp_module)
 
 
 最後まで読んで頂き、どうも有難う御座います!
 DevSamurai 橋本
+
+
+関連記事：[Terraformツールを使ってGCPリソース管理](https://qiita.com/devs_hd/items/6a715fedf5462af420f2)
