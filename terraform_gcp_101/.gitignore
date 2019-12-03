@@ -1,0 +1,10 @@
+# OS
+*.DS_Store
+
+# Credential files
+.secrets
+
+# terraform
+*.terraform
+*account.json
+*terraform.tfstate*
