@@ -43,7 +43,6 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: nfs-server
-  namespace: data-processing
 spec:
   replicas: 1
   selector:
@@ -72,7 +71,7 @@ spec:
       volumes:
         - name: mypvc
           gcePersistentDisk:
-            pdName: dataprocessing-gce-nfs-disk
+            pdName: gce-nfs-disk
             fsType: ext4
 ```
 
@@ -81,7 +80,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nfs-server
-  namespace: data-processing
 spec:
   ports:
     - name: nfs
@@ -134,21 +132,19 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: nfs-data-volume
-  namespace: data-processing
 spec:
   capacity:
     storage: 10Gi
   accessModes:
     - ReadWriteMany
   nfs:
-    server: "34.84.139.83"
+    server: "xx.xx.xx.xx"
     path: "/exports"
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: nfs-data-volume
-  namespace: data-processing
 spec:
   accessModes:
     - ReadWriteMany
@@ -270,7 +266,7 @@ substitutions:
   # # GCR region name to push image
   _GCR_REGION: asia.gcr.io
   # # Project ID
-  _GCR_PROJECT: syns-226007
+  _GCR_PROJECT: project-abc123
   # # Image name
   _GCR_IMAGE_NAME: dummy-job
   # # Image tag
