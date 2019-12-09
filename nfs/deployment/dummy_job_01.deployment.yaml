@@ -9,7 +9,7 @@ spec:
     spec:
       containers:
       - name: dummy-job-01-container
-        image: asia.gcr.io/syns-226007/dummy-job:latest
+        image: asia.gcr.io/project-abc123/dummy-job:latest
         command: ["/app/dummyjob"]
         args: ["--job-name", "job-01", "--output-path", "/app/output"]
         volumeMounts:

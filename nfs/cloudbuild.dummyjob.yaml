@@ -24,7 +24,7 @@ substitutions:
   # # GCR region name to push image
   _GCR_REGION: asia.gcr.io
   # # Project ID
-  _GCR_PROJECT: syns-226007
+  _GCR_PROJECT: project-ds
   # # Image name
   _GCR_IMAGE_NAME: dummy-job
   # # Image tag
