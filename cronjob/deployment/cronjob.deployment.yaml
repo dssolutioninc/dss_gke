@@ -1,0 +1,16 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: simple-cron-job
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: simple-cron-job-container
+            image: asia.gcr.io/project-abc123/simple-job:latest
+            command: ["/job/simplejob"]
+            args: ["--run-time", "10"]
+          restartPolicy: Never
