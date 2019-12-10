@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: [
+      'builds', 
+      'submit',
+      '--config=_base/cloudbuild.matlab.R2019b.yaml',
+      '--substitutions=_GCR_PROJECT=project-abc123,_GCR_REGION=asia.gcr.io',
+      '.'
+  ]
+timeout: 3600s

@@ -1,0 +1,24 @@
+steps:
+
+# docker build
+- name: 'gcr.io/cloud-builders/docker'
+  dir: .
+  args: [
+         'build',
+         '-t', '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}:${_GCR_TAG}',
+         '-f', 'dockerfile/Dockerfile.matlab.R2019b',
+         '--cache-from', '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}:${_GCR_TAG}',
+         '.'
+        ]
+        
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["push", '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}']
+
+timeout: 3600s
+
+substitutions:
+  # # Image name
+  _GCR_IMAGE_NAME: matlab-r2019b
+  # # Image tag
+  _GCR_TAG: latest
+  # # KMS Key location to decrypt private key
