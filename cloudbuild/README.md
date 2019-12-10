@@ -6,7 +6,7 @@
 Dockerイメージビルドして、Container Registryに登録するまでは複数ステップがあって、毎回各ステップ別で実施するとめんどくさい。
 それを解決するため、Cloudbuildを使って複数ステップをまとめてビルドを行います。
 
-Cloudbuildを使わない場合、下記がGKEにデプロイする手順である
+Cloudbuildを使わない場合、GKEにデプロイする手順
 
 -   Dockerイメージのビルド
 -   GCP Container RegistryにDockerイメージを登録（複数操作実施）
@@ -17,9 +17,8 @@ Cloudbuildを使わない場合、下記がGKEにデプロイする手順であ�
 -   Cloudbuildでイメージ作成とContainer Registryに登録（まとめて１回実施）
 -   Container RegistryからアプリケーションをGKEにデプロイ
 
-*実施手順*
 
-## 1. 稼働のアプリケーション準備
+## 1.　サンプルアプリケーション準備
 
 ※以前記事のwebアプリケーションを再利用してCloudbuildを入れます。
 [GKE上にwebアプリケーションを構築する方法](https://qiita.com/devs_hd/items/8edf3452d9912c19c7d8)
@@ -41,7 +40,7 @@ cloudbuild
 ```
 
 
-## 2. Cloudbuildでイメージ作成とContainer Registryに登録
+## 2.　Cloudbuildでイメージ作成とContainer Registryに登録
 
 ```sh:cloudbuild.simplewebapp.yaml
 options:
@@ -114,7 +113,7 @@ gcloud builds submit --config cloudbuild.simplewebapp.yaml
 
 
 
-## 3. Container RegistryからアプリケーションをGKEにデプロイ
+## 3.　Container RegistryからアプリケーションをGKEにデプロイ
 
 デプロイメント定義ファイルを準備する。
 
