@@ -1,0 +1,9 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: [
+      'builds', 
+      'submit',
+      '--config=build/cloudbuild/_base/cloudbuild.simplewebapp.yaml',
+      '--substitutions=_GCR_PROJECT=ds-abc123-staging',
+      '.'
+  ]
