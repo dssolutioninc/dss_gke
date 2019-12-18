@@ -1,0 +1,43 @@
+options:
+  env:
+  - GO111MODULE=on
+  volumes:
+  - name: go-modules
+    path: /go
+
+steps:
+# go test
+- name: golang:1.12
+  dir: .
+  args: ['go', 'test', './...']
+
+# go build
+- name: golang:1.12
+  dir: .
+  args: ['go', 'build', '-o', 'sample_app', 'app/sample_app.go']
+  env: ["CGO_ENABLED=0"]
+
+# docker build
+- name: 'gcr.io/cloud-builders/docker'
+  dir: .
+  args: [
+         'build',
+         '-t', '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}:${_GCR_TAG}',
+         '-f', 'sampleapp.Dockerfile',
+         '--cache-from', '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}:${_GCR_TAG}',
+         '.'
+        ]
+
+# push image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["push", '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}']
+
+substitutions:
+  # # Project ID
+  _GCR_PROJECT: project-abc123
+  # # GCR region name to push image
+  _GCR_REGION: asia.gcr.io
+   # # Image name
+  _GCR_IMAGE_NAME: sample-pubsub-usage-app
+  # # Image tag
+  _GCR_TAG: latest

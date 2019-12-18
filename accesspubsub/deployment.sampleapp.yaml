@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sample-pubsub-usage-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample-pubsub-usage-app
+    spec:
+      volumes:
+      - name: service-account-credential
+        secret:
+          secretName: service-account-credential
+      containers:
+      - name: sample-pubsub-usage-app-container
+        image: asia.gcr.io/project-abc123/sample-pubsub-usage-app:latest
+        # environment variables for the Pod
+        env:
+        - name: PROJECT_ID
+          value: "project-abc123"
+        - name: PUBSUB_SUBSCRIPTION_NAME
+          value: "sample-app-topic-sub"
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /app/secret/account.json
+        
+        volumeMounts:
+        - mountPath: /app/secret
+          name: service-account-credential
+          readOnly: true
