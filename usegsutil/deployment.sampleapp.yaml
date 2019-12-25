@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-gsutil-usage-app
+  namespace: dev-sol-grdsys
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: sample-gsutil-usage-app
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sample-gsutil-usage-app
+  namespace: dev-sol-grdsys
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample-gsutil-usage-app
+    spec:
+      volumes:
+      - name: service-account-credential
+        secret:
+          secretName: service-account-credential
+      containers:
+      - name: sample-gsutil-usage-app-container
+        image: asia.gcr.io/project-abc123/sample-app:latest
+        ports:
+          - containerPort: 80
+        # environment variables for the Pod
+        env:
+        - name: PROJECT_ID
+          value: "project-abc123"
+        - name: ACCOUNT_JSON_FILE
+          value: "/app/secret/account.json"
+        - name: STORAGE_BUCKET_NAME
+          value: "gs://ds_test_bucket_123"
+        
+        volumeMounts:
+        - mountPath: /app/secret
+          name: service-account-credential
+          readOnly: true
