@@ -1,8 +1,11 @@
 # GKE中のGolangアプリケーションからCloud Pub/Subを使ってデータ連携を行う
 
+GKEの中に稼働されるアプリケーションからどうやってGCPサービスにアクセスしたり、データ連携したりするか？という疑問がある方々に回答する記事をまとめました。
+Pub/Subサービスを使って、サンプルとして作成しました。
+
 手順まとめ
 
-- サービスアカウント作成＆アクセス用のaccount.jsonファイル発行
+1. サービスアカウント作成＆アクセス用のaccount.jsonファイル発行
 - Pub/SubのTopic＆Subscription作成
 - Pub/SubをSubscriptionアプリケーションの準備
 - ローカルで稼働確認
@@ -396,6 +399,7 @@ spec:
 ```
 【デプロイ定義の説明】
 作成できた「secret generic」ボリュームをデプロイ定義にMount設定して、account.jsonファイルパスを環境変数に渡す。
+「GOOGLE_APPLICATION_CREDENTIALS」の環境変数はPub/Subにアクセスするためプログラムは使います。この設定はポイントとなります。
 
 
 アプリケーションをGKEにデプロイします。
