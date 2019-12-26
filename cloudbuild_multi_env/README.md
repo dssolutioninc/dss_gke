@@ -147,7 +147,7 @@ substitutions:
 
 ### 各種環境別スクリプト
 
-こつは「--substitutions」を使って環境別の設定を指定します。今回はプロジェクトIDだけとなりますが、他の設定があったらコマ区切りで追加する。
+こつは「--substitutions」を使って環境別の設定を指定します。今回はプロジェクトIDだけとなりますが、他の設定があったらコンマで区切って追加ください。
 例：
 
 ```sh:
@@ -202,21 +202,21 @@ steps:
 ```sh:開発環境
 cd cloudbuild-multi-env-folder
 
-# build image for raw process control service
+# build image for dev env
 gcloud builds submit --config build/cloudbuild/dev/cloudbuild.simplewebapp.yaml
 ```
 
 ```sh:ステージング環境
 cd cloudbuild-multi-env-folder
 
-# build image for raw process control service
+# build image for staging env
 gcloud builds submit --config build/cloudbuild/staging/cloudbuild.simplewebapp.yaml
 ```
 
 ```sh:本番環境
 cd cloudbuild-multi-env-folder
 
-# build image for raw process control service
+# build image for prod env
 gcloud builds submit --config build/cloudbuild/prod/cloudbuild.simplewebapp.yaml
 ```
 

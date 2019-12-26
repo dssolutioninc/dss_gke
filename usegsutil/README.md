@@ -118,7 +118,7 @@ if err != nil {
 ## 4.　ビルド＆デプロイ
 ### 　Dockerイメージ
 gcloudとgsutilを使うため、Dockerイメージはgoogle/cloud-sdkを使います。
-alpineを使ってイメージを最低化とします。
+alpineを使ってイメージのサイズを最低化とします。
 
 ```sh
 FROM google/cloud-sdk:alpine
