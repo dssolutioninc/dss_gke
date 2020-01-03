@@ -126,7 +126,7 @@ steps:
   args: [
          'build',
          '-t', '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}:${_GCR_TAG}',
-         '-f', 'simplewebapp.Dockerfile',
+         '-f', 'build/dockerfile/simplewebapp.Dockerfile',
          '--cache-from', '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}:${_GCR_TAG}',
          '.'
         ]
