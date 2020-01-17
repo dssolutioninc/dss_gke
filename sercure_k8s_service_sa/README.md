@@ -1,20 +1,20 @@
 # Cloud Endpointsを使って、GKEのサービス間の認証
 
-##　1．はじめに
+## 　1．はじめに
 別の記事でGKEにウェブサービスをデプロイする方法を紹介いたしました。
 そのウェブサービスはどうやってアクセス元を認証するかのご質問がある方々がいると思います。
 ウェブサービスに認証仕組みを追加する方法もありますが、手間がかかります。
 本記事は GCP Cloud Endpoints を使うGKEのサービス間の認証方法を紹介いたします。
 
 
-##　2．アーキテクチャー
+## 　2．アーキテクチャー
 早速ですが、想像しやすくするため、全体アーキテクチャーを先に見せます。
 ![gke_service_authen_between_services_001.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/54e3b133-e924-37a3-9c86-f6205e5ada1d.png)
 
 
 これから構築に行きます。
 
-##　3．アプリケーションのフォルダ構成
+## 　3．アプリケーションのフォルダ構成
 
 ```sh
 application_folder
@@ -38,7 +38,7 @@ application_folder
     └── simplewebapp.go
 ```
 
-##　4．ウェブアプリケーション
+## 　4．ウェブアプリケーション
 下記の３つURLを提供します。
 
 ```sh
@@ -50,7 +50,7 @@ application_folder
 詳細な処理はソースコードをご参照。
 
 
-##　5．Cloud Endpoints
+## 　5．Cloud Endpoints
 
 サービス間認証の場合、サービスアカウントを使う認証方法がお進められます。
 
@@ -126,8 +126,6 @@ paths:
           description: "Success"
           schema:
             type: array
-            # items:
-            #   $ref: '#/definitions/Index'
   "/public":
     get:
       description: "public page"
@@ -139,8 +137,6 @@ paths:
           description: "Success"
           schema:
             type: array
-            # items:
-            #   $ref: '#/definitions/Public'
   "/private":
     get:
       description: "private page"
@@ -152,8 +148,6 @@ paths:
           description: "Success"
           schema:
             type: array
-            # items:
-            #   $ref: '#/definitions/Private'
       security:
       - google_jwt: []
 
@@ -191,13 +185,13 @@ gcloud endpoints services deploy openapiv2/simple_webapp_endpoint.yaml
 <img width="1418" alt="gke_service_authen_between_services_002.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/cc48329f-0e5b-bf1f-facc-c2480095db10.png">
 
 
-##　6．Container Registryにイメージビルド
+## 　6．Container Registryにイメージビルド
 
 ```sh
 gcloud builds submit --config build/cloudbuild.simplewebapp.yaml
 ```
 
-##　7．GKEにデプロイメントの定義
+## 　7．GKEにデプロイメントの定義
 
 上記の構成図どおり、認証できるため「Extensible Service Proxy」を使います。
 Extensible Service Proxy（ESP）は、OpenAPI または gRPC API バックエンドの前面で動作し、認証、モニタリング、ロギングなどの API 管理機能を提供する高パフォーマンスでスケーラブルなプロキシです。
@@ -266,7 +260,7 @@ GKEで確認
 <img width="1139" alt="gke_service_authen_between_services_004.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/14e576ac-8c88-5878-f274-d5eedc0a99d1.png">
 
 
-##　8．稼働確認
+## 　8．稼働確認
 ブラウザでStatic IPを開いて確認してみます。
 <img width="564" alt="gke_service_authen_between_services_005.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/8a2511e8-2dc4-b158-bfc2-ea2b4220b77c.png">
 

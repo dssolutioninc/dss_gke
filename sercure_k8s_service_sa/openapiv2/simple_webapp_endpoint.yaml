@@ -33,8 +33,6 @@ paths:
           description: "Success"
           schema:
             type: array
-            # items:
-            #   $ref: '#/definitions/Index'
   "/public":
     get:
       description: "public page"
@@ -46,8 +44,6 @@ paths:
           description: "Success"
           schema:
             type: array
-            # items:
-            #   $ref: '#/definitions/Public'
   "/private":
     get:
       description: "private page"
@@ -59,8 +55,6 @@ paths:
           description: "Success"
           schema:
             type: array
-            # items:
-            #   $ref: '#/definitions/Private'
       security:
       - google_jwt: []
 
@@ -76,5 +70,3 @@ securityDefinitions:
     x-google-issuer: "service_account_001@PROJECT_ID.iam.gserviceaccount.com"
     # Update this with your service account's email address.
     x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/service_account_001@PROJECT_ID.iam.gserviceaccount.com"
-# security:
-#   - google_jwt: []
