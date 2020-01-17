@@ -1,4 +1,4 @@
-# プログラムからKubernetesジョブを生成して非同期処理を行う
+# GKE中のプログラムからKubernetesジョブを生成して非同期処理を行う
 
 
 ## 1.　はじめに
@@ -219,7 +219,7 @@ kubectl create clusterrolebinding cluster-admin-permission-binding \
 ```
 
 
-## 6.　稼働検証
+## 7.　稼働検証
 
 ウェブアプリケーションのURLを開きます。
 http://34.84.171.50/index
