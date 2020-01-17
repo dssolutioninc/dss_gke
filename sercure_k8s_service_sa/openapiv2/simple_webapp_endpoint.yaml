@@ -1,0 +1,80 @@
+# [START swagger]
+swagger: "2.0"
+info:
+  description: "Simple Sercure Webapp API Endpoints"
+  version: 1.0.0
+  title: Simple Sercure Webapp
+host: "simple-sercure-webapp.endpoints.PROJECT_ID.cloud.goog"
+x-google-endpoints:
+  - name: "simple-sercure-webapp.endpoints.PROJECT_ID.cloud.goog"
+    target: "35.243.84.30"
+
+tags:
+  - name: simple-webapp
+    description: Simple Sercure Webapp
+# [END swagger]
+consumes:
+- "application/json"
+- "text/html"
+produces:
+- "application/json"
+- "text/html"
+schemes:
+- "http"
+paths:
+  "/index":
+    get:
+      description: "index page"
+      operationId: "index"
+      produces:
+      - "text/html"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            # items:
+            #   $ref: '#/definitions/Index'
+  "/public":
+    get:
+      description: "public page"
+      operationId: "public"
+      produces:
+      - "text/html"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            # items:
+            #   $ref: '#/definitions/Public'
+  "/private":
+    get:
+      description: "private page"
+      operationId: "private"
+      produces:
+      - "text/html"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+            # items:
+            #   $ref: '#/definitions/Private'
+      security:
+      - google_jwt: []
+
+securityDefinitions:
+  # This section configures authentication using Google API Service Accounts
+  # to sign a json web token. This is mostly used for server-to-server
+  # communication.
+  google_jwt:
+    authorizationUrl: ""
+    flow: "implicit"
+    type: "oauth2"
+    # This must match the 'iss' field in the JWT.
+    x-google-issuer: "service_account_001@PROJECT_ID.iam.gserviceaccount.com"
+    # Update this with your service account's email address.
+    x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/service_account_001@PROJECT_ID.iam.gserviceaccount.com"
+# security:
+#   - google_jwt: []
