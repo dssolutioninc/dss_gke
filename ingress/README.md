@@ -1,4 +1,4 @@
-# GKEのIngressで複数サービスを１つのEndpoindにまとめる
+# GKEのIngressで複数サービスを１つのEndpoindにまとめ
 
 ## 　1．はじめに
 マイクロサービスを導入すると、サービス数がどんどん多くなります。
@@ -9,7 +9,7 @@ Ingressを使用して、複数のサービスを１つのEndpointにまとめ�
 
 ## 　2．アーキテクチャー
 早速ですが、想像しやすくするため、全体アーキテクチャーを先に提示します。
-![gke_ingress_for_collection_of_services_001.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/54e3b133-e924-37a3-9c86-f6205e5ada1d.png)
+![gke_ingress_for_collection_of_services_001.png](https://www.devsamurai.com/wp-content/uploads/2020/08/gke_ingress_for_collection_of_services_001.png)
 
 
 これから構築に行きます。
@@ -93,12 +93,10 @@ spec:
           serviceName: user-service
           servicePort: 80
 ---
-...
+...ソースコードにご参照
 ```
 
 ## 　7．GKEにデプロイ
-
-GKEにデプロイ
 
 ```sh
 kubectl apply -f deployment/application.deployment.yaml
@@ -108,13 +106,11 @@ kubectl get ingresses
 > NAME              HOSTS       ADDRESS           PORTS     AGE
 > example-ingress     *         203.0.113.123     80        59s
 ```
-EXTERNAL-IP は指定された Static IP となっています。
-
 
 
 <br>  
 本記事で利用したソースコードはこちら
-[https://github.com/itdevsamurai/gke/tree/master/sercure_k8s_service_sa](https://github.com/itdevsamurai/gke/tree/master/sercure_k8s_service_sa)
+[https://github.com/itdevsamurai/gke/tree/master/ingress](https://github.com/itdevsamurai/gke/tree/master/ingress)
 
  
 <br> 
