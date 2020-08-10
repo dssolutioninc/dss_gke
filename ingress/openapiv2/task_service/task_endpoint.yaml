@@ -1,0 +1,48 @@
+swagger: "2.0"
+info:
+  description: "Task API Sercure Endpoints"
+  version: 1.0.0
+  title: Tasks API
+host: "tasks.endpoints.PROJECT_ID.cloud.goog"
+x-google-endpoints:
+  - name: "tasks.endpoints.PROJECT_ID.cloud.goog"
+basePath: /tasks/v1
+tags:
+  - name: tasks
+    description: Task API
+consumes:
+- "application/json"
+- "text/html"
+produces:
+- "application/json"
+- "text/html"
+schemes:
+- "http"
+paths:
+  "/current":
+    get:
+      description: "current task api"
+      operationId: "current"
+      produces:
+      - "text/html"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: array
+
+securityDefinitions:
+  # This section configures authentication using Google API Service Accounts
+  # to sign a json web token. This is mostly used for server-to-server
+  # communication.
+  service-accout:
+    authorizationUrl: ""
+    flow: "implicit"
+    type: "oauth2"
+    # This must match the 'iss' field in the JWT.
+    x-google-issuer: "service_account_001@PROJECT_ID.iam.gserviceaccount.com"
+    # Update this with your service account's email address.
+    x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/service_account_001@PROJECT_ID.iam.gserviceaccount.com"
+
+security:
+  - service-accout: []
