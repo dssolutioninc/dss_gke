@@ -120,8 +120,8 @@ kubectl apply -f nfs-service.deployment.yaml
 
 
 デプロイ後の確認
-<img width="910" alt="gcp_gke_kubernetes_nfs_devsamurai_001.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/562088f2-5ffe-63d7-5734-996c4bc5aba7.png">
-<img width="953" alt="gcp_gke_kubernetes_nfs_devsamurai_002.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/a6e83928-f331-0b88-6a29-ccf092c23594.png">
+<img width="910" alt="gcp_gke_kubernetes_nfs_dss_001.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/562088f2-5ffe-63d7-5734-996c4bc5aba7.png">
+<img width="953" alt="gcp_gke_kubernetes_nfs_dss_002.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/a6e83928-f331-0b88-6a29-ccf092c23594.png">
 
 
 ## 2.  NFSを使って、GKE中にストレージを作成
@@ -162,7 +162,7 @@ kubectl apply -f nfs-volume.yaml
 ```
 
 定義実施後確認
-<img width="947" alt="gcp_gke_kubernetes_nfs_devsamurai_003.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/30bba43b-33fe-8776-f760-5ef4d0f271df.png">
+<img width="947" alt="gcp_gke_kubernetes_nfs_dss_003.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/30bba43b-33fe-8776-f760-5ef4d0f271df.png">
 
 
 
@@ -286,17 +286,17 @@ kubectl apply -f deployment/dummy_job_02.deployment.yaml
 
 
 ビルドイメージの確認
-<img width="765" alt="gcp_gke_kubernetes_nfs_devsamurai_004.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/d25b82e0-6eaa-3e3e-d983-398bff49c2a7.png">
+<img width="765" alt="gcp_gke_kubernetes_nfs_dss_004.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/d25b82e0-6eaa-3e3e-d983-398bff49c2a7.png">
 
 
 
 デプロイジョブはGKEの中に確認
-<img width="898" alt="gcp_gke_kubernetes_nfs_devsamurai_005.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/a1da62ea-afb6-5da3-38e8-e8163af44b91.png">
+<img width="898" alt="gcp_gke_kubernetes_nfs_dss_005.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/a1da62ea-afb6-5da3-38e8-e8163af44b91.png">
 
 
 
 ２つのジョブはNFSを共有利用できることを稼働ログで確認できます。
-<img width="766" alt="gcp_gke_kubernetes_nfs_devsamurai_006.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/80f773e5-3f04-9336-6c9c-108ddfa44e84.png">
+<img width="766" alt="gcp_gke_kubernetes_nfs_dss_006.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/80f773e5-3f04-9336-6c9c-108ddfa44e84.png">
 
 
 
@@ -306,10 +306,10 @@ NFSを共有して読み書きできることを確認できました。
 
 本記事で利用したソースコードはこちら
 
-[https://github.com/itdevsamurai/gke/tree/master/nfs](https://github.com/itdevsamurai/gke/tree/master/nfs)
+[https://github.com/dssolutioninc/dss_gke/tree/master/nfs](https://github.com/dssolutioninc/dss_gke/tree/master/nfs)
 
  
 
 最後まで読んで頂き、どうも有難う御座います!
 
-DevSamurai 橋本
+DSS 橋本

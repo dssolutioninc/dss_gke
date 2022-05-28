@@ -110,9 +110,8 @@ kubectl get ingresses
 
 <br>  
 本記事で利用したソースコードはこちら
-[https://github.com/itdevsamurai/gke/tree/master/ingress](https://github.com/itdevsamurai/gke/tree/master/ingress)
+[https://github.com/dssolutioninc/dss_gke/tree/master/ingress](https://github.com/dssolutioninc/dss_gke/tree/master/ingress)
 
- 
 <br> 
 最後まで読んで頂き、どうも有難う御座います!
-DevSamurai 橋本
+DSS 橋本

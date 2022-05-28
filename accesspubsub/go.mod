@@ -1,4 +1,4 @@
-module github.com/itdevsamurai/gke/accesspubsub
+module github.com/dssolutioninc/dss_gke/accesspubsub
 
 go 1.13
 

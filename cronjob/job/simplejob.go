@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/itdevsamurai/gke/cronjob/job/handler"
+	"github.com/dssolutioninc/dss_gke/cronjob/job/handler"
 )
 
 func main() {

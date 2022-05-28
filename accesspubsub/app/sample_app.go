@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/itdevsamurai/gke/accesspubsub/app/handler"
+	"github.com/dssolutioninc/dss_gke/accesspubsub/app/handler"
 )
 
 func main() {

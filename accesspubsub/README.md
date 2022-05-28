@@ -92,7 +92,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/itdevsamurai/gke/accesspubsub/app/handler"
+	"github.com/dssolutioninc/dss_gke/accesspubsub/app/handler"
 )
 
 func main() {
@@ -426,9 +426,9 @@ GKE中のアプリケーションの稼働ログを確認
 
 <br>  
 本記事で利用したソースコードはこちら
-[https://github.com/itdevsamurai/gke/tree/master/accesspubsub](https://github.com/itdevsamurai/gke/tree/master/accesspubsub)
+[https://github.com/dssolutioninc/dss_gke/tree/master/accesspubsub](https://github.com/dssolutioninc/dss_gke/tree/master/accesspubsub)
 
  
 <br> 
 最後まで読んで頂き、どうも有難う御座います!
-DevSamurai 橋本
+DSS 橋本

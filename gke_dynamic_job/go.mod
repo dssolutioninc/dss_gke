@@ -1,4 +1,4 @@
-module github.com/itdevsamurai/gke/k8sclient
+module github.com/dssolutioninc/dss_gke/k8sclient
 
 go 1.12
 

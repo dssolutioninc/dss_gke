@@ -39,7 +39,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/itdevsamurai/gke/cronjob/job/handler"
+	"github.com/dssolutioninc/dss_gke/cronjob/job/handler"
 )
 
 func main() {
@@ -95,7 +95,7 @@ func getArguments() string {
 cd path_to_cronjob
 go run job/simplejob.go --run-time=5
 ```
-<img width="553" alt="gcp_gke_kubernetes_batch_job_devsamurai_001.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/aa32f0ca-42b0-63e3-b867-2e00fc032b7c.png">
+<img width="553" alt="gcp_gke_kubernetes_batch_job_dss_001.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/aa32f0ca-42b0-63e3-b867-2e00fc032b7c.png">
 
 
 
@@ -106,7 +106,7 @@ Cloud buildを使ってDockerイメージのビルドとContainer Registryにプ
 ```sh:simplejob.Dockerfile
 FROM golang:1.12 as build_env
 
-WORKDIR /go/src/github.com/itdevsamurai/gke/cronjob
+WORKDIR /go/src/github.com/dssolutioninc/dss_gke/cronjob
 
 COPY ./job ./job
 COPY go.mod ./
@@ -118,7 +118,7 @@ RUN export GOPROXY="https://proxy.golang.org" && export GO111MODULE=on && CGO_EN
 
 FROM alpine:latest
 WORKDIR /app
-COPY --from=build_env /go/src/github.com/itdevsamurai/gke/cronjob /job
+COPY --from=build_env /go/src/github.com/dssolutioninc/dss_gke/cronjob /job
 ```
 
 ```sh:cloudbuild.cronjob.yaml
@@ -235,10 +235,10 @@ kubectl apply -f deployment/cronjob.deployment.yaml
 
 本記事で利用したソースコードはこちら
 
-[https://github.com/itdevsamurai/gke/tree/master/cronjob](https://github.com/itdevsamurai/gke/tree/master/cronjob)
+[https://github.com/dssolutioninc/dss_gke/tree/master/cronjob](https://github.com/dssolutioninc/dss_gke/tree/master/cronjob)
 
  
 
 最後まで読んで頂き、どうも有難う御座います!
 
-DevSamurai 橋本
+DSS 橋本

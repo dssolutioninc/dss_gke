@@ -293,9 +293,9 @@ JWTトークンを使って、Private URLをアクセス出来ました。
 
 <br>  
 本記事で利用したソースコードはこちら
-[https://github.com/itdevsamurai/gke/tree/master/sercure_k8s_service_sa](https://github.com/itdevsamurai/gke/tree/master/sercure_k8s_service_sa)
+[https://github.com/dssolutioninc/dss_gke/tree/master/sercure_k8s_service_sa](https://github.com/dssolutioninc/dss_gke/tree/master/sercure_k8s_service_sa)
 
  
 <br> 
 最後まで読んで頂き、どうも有難う御座います!
-DevSamurai 橋本
+DSS 橋本

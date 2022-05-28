@@ -37,4 +37,4 @@ RUN yum update -y && yum install -y \
 
 <br> 
 記事のご覧、どうもありがとうございます！
-DevSamurai 橋本
+DSS 橋本

@@ -4,7 +4,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
-	"github.com/itdevsamurai/gke/ingress/services/user/handler"
+	"github.com/dssolutioninc/dss_gke/ingress/services/user/handler"
 )
 
 // Default Server Port

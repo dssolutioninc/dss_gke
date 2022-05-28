@@ -1,4 +1,4 @@
-module github.com/itdevsamurai/gke/usegsutil
+module github.com/dssolutioninc/dss_gke/usegsutil
 
 go 1.13
 

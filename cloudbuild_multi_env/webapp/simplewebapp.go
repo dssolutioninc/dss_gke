@@ -4,7 +4,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
-	"github.com/itdevsamurai/gke/simplewebapp/webapp/handler"
+	"github.com/dssolutioninc/dss_gke/simplewebapp/webapp/handler"
 )
 
 // Default Server Port

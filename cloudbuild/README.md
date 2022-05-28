@@ -105,11 +105,11 @@ cd path_to_app_folder
 
 gcloud builds submit --config cloudbuild.simplewebapp.yaml
 ```
-<img width="780" alt="gcp_gke_kubernetes_cloudbuild_devsamurai_001.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/ad727737-d0ee-2b95-9b14-38cb6fe6a15d.png">
+<img width="780" alt="gcp_gke_kubernetes_cloudbuild_dss_001.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/ad727737-d0ee-2b95-9b14-38cb6fe6a15d.png">
 
 
 実施後、Container Registry上の作成イメージを確認
-<img width="773" alt="gcp_gke_kubernetes_cloudbuild_devsamurai_002.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/36109757-26ea-7ffd-ed10-5ef7276e15f6.png">
+<img width="773" alt="gcp_gke_kubernetes_cloudbuild_dss_002.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/36109757-26ea-7ffd-ed10-5ef7276e15f6.png">
 
 
 
@@ -169,9 +169,9 @@ kubectl apply -f simplewebapp.deployment.yaml
 ```
 
 デプロイ後、結果確認
-<img width="926" alt="gcp_gke_kubernetes_cloudbuild_devsamurai_003.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/23db8cab-0413-a296-621b-91c87112120c.png">
+<img width="926" alt="gcp_gke_kubernetes_cloudbuild_dss_003.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/23db8cab-0413-a296-621b-91c87112120c.png">
 
-<img width="1138" alt="gcp_gke_kubernetes_cloudbuild_devsamurai_004.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/54822e01-d399-5664-f31c-1a764ba0e01c.png">
+<img width="1138" alt="gcp_gke_kubernetes_cloudbuild_dss_004.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/535698/54822e01-d399-5664-f31c-1a764ba0e01c.png">
 
 
 外部からwebアプリケーションへのアクセス確認
@@ -184,9 +184,9 @@ curl http://34.85.10.96/
 
 <br>  
 本記事で利用したソースコードはこちら
-[https://github.com/itdevsamurai/gke/tree/master/cloudbuild](https://github.com/itdevsamurai/gke/tree/master/cloudbuild)
+[https://github.com/dssolutioninc/dss_gke/tree/master/cloudbuild](https://github.com/dssolutioninc/dss_gke/tree/master/cloudbuild)
 
  
 <br> 
 最後まで読んで頂き、どうも有難う御座います!
-DevSamurai 橋本
+DSS 橋本

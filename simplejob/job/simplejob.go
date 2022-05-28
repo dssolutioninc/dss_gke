@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/itdevsamurai/gke/simplejob/job/handler"
+	"github.com/dssolutioninc/dss_gke/simplejob/job/handler"
 )
 
 func main() {

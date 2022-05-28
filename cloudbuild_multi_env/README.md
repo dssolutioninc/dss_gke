@@ -39,7 +39,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
-	"github.com/itdevsamurai/gke/simplewebapp/webapp/handler"
+	"github.com/dssolutioninc/dss_gke/simplewebapp/webapp/handler"
 )
 
 // Default Server Port
@@ -222,9 +222,9 @@ gcloud builds submit --config build/cloudbuild/prod/cloudbuild.simplewebapp.yaml
 
 <br>  
 本記事で利用したソースコードはこちら
-[https://github.com/itdevsamurai/gke/tree/master/cloudbuild_multi_env](https://github.com/itdevsamurai/gke/tree/master/cloudbuild_multi_env)
+[https://github.com/dssolutioninc/dss_gke/tree/master/cloudbuild_multi_env](https://github.com/dssolutioninc/dss_gke/tree/master/cloudbuild_multi_env)
 
  
 <br> 
 最後まで読んで頂き、どうも有難う御座います!
-DevSamurai 橋本
+DSS 橋本

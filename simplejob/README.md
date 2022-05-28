@@ -1,5 +1,5 @@
 # Create and Run Simple Job on GKE
-Hashimoto Du at DevSamurai
+Hashimoto Du at DSS
 
 Instruction for build and run as below
 

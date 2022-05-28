@@ -13,7 +13,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/itdevsamurai/gke/sercure_k8s_service_sa/tools/api/config"
+	"github.com/dssolutioninc/dss_gke/sercure_k8s_service_sa/tools/api/config"
 	"golang.org/x/oauth2/google"
 	"golang.org/x/oauth2/jws"
 )

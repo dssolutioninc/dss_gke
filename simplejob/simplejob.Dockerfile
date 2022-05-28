@@ -1,6 +1,6 @@
 FROM golang:1.12 as build_env
 
-WORKDIR /go/src/github.com/itdevsamurai/gke/simplejob
+WORKDIR /go/src/github.com/dssolutioninc/dss_gke/simplejob
 
 COPY ./job ./job
 COPY go.mod ./
@@ -12,4 +12,4 @@ RUN export GOPROXY="https://proxy.golang.org" && export GO111MODULE=on && CGO_EN
 
 FROM alpine:latest
 WORKDIR /app
-COPY --from=build_env /go/src/github.com/itdevsamurai/gke/simplejob /job
+COPY --from=build_env /go/src/github.com/dssolutioninc/dss_gke/simplejob /job

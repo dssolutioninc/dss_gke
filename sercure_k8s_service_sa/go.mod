@@ -1,4 +1,4 @@
-module github.com/itdevsamurai/gke/sercure_k8s_service_sa
+module github.com/dssolutioninc/dss_gke/sercure_k8s_service_sa
 
 go 1.13
 

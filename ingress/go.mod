@@ -1,4 +1,4 @@
-module github.com/itdevsamurai/gke/ingress
+module github.com/dssolutioninc/dss_gke/ingress
 
 go 1.13
 

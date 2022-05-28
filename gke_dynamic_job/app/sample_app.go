@@ -4,7 +4,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
-	"github.com/itdevsamurai/gke/k8sclient/app/handler"
+	"github.com/dssolutioninc/dss_gke/k8sclient/app/handler"
 )
 
 const (

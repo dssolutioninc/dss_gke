@@ -1,4 +1,4 @@
-module github.com/itdevsamurai/gke/simplewebapp
+module github.com/dssolutioninc/dss_gke/simplewebapp
 
 go 1.13
 

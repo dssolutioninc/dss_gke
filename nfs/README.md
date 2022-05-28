@@ -1,5 +1,5 @@
 # Build up NFS and use it in GKE
-Hashimoto Du at DevSamurai
+Hashimoto Du at DSS
 
 Instruction for build and run as below
 
