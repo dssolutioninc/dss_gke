@@ -70,4 +70,5 @@ substitutions:
 
 <br>
 ご覧して頂き、どうも有難う御座います!
-DevSamurai Ben
+
+DSS Ben

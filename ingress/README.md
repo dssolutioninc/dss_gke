@@ -9,7 +9,7 @@ Ingressを使用して、複数のサービスを１つのEndpointにまとめ�
 
 ## 　2．アーキテクチャー
 早速ですが、想像しやすくするため、全体アーキテクチャーを先に提示します。
-![gke_ingress_for_collection_of_services_001.png](https://www.devsamurai.com/wp-content/uploads/2020/08/gke_ingress_for_collection_of_services_001.png)
+![gke_ingress_for_collection_of_services_001.png](https://www.dssolution.jp/wp-content/uploads/2020/08/gke_ingress_for_collection_of_services_001.png)
 
 
 これから構築に行きます。
